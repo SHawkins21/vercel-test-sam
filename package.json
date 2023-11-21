@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && npm run build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall":"prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.5.2",
+    "@prisma/client": "^5.6.0",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18"
@@ -22,7 +24,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "postcss": "^8",
-    "prisma": "^5.5.2",
+    "prisma": "^5.6.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

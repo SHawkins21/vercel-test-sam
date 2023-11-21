@@ -1,3 +1,5 @@
+"use client"; 
+
 import Image from 'next/image'
 import prisma from "@/lib/prisma"
 import IncomeItem from './component/IncomeItem'
