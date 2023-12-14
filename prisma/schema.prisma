@@ -28,7 +28,7 @@ model User {
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   posts         Post[]
   income        Income[]
-  queryone      QueryOne[]
+  invoice     Invoice[]
   @@map(name: "users")
 }
 
@@ -41,11 +41,22 @@ model Income {
   authorId  String?
 }
 
-model QueryOne {
+model Invoice {
   id        String     @default(cuid()) @id
+  bill      Float
   title     String
   content   String?
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  String?
 }
+
+
+
+// id:string;     
+//     title:string;
+//     bill:float,
+//     content:string | null ;
+//     published?: boolean; 
+//     author:User ;    
+//     authorId:string | null

@@ -4,6 +4,12 @@ import Image from 'next/image'
 import prisma from "@/lib/prisma"
 import IncomeItem from './component/IncomeItem'
 import { getIncome } from './orm/income'
+import { getOneInvoice } from './orm/invoice';
+import { QueryOne } from '@prisma/client';
+import QueryOneItem from './component/InvoiceItem';
+import { Key } from 'react';
+import InvoiceItem from './component/InvoiceItem';
+
 
 
 
@@ -13,6 +19,16 @@ import { getIncome } from './orm/income'
 export default async function Home() {
 
     const income = await getIncome()
+    const onBill = async(id:string) => { 
+
+    }
+
+
+    const invoicereceived = async(id:string) => {
+    
+        await getOneInvoice(id)
+
+    }
     
 
   return (
@@ -32,13 +48,42 @@ export default async function Home() {
                 }} key={index}
                 {...income}              
               />
-
+            
             ))
 
           }
 
-
      </div>
+     <div>
+
+      { 
+      
+         invoicereceived?.map((id, invoice) => (
+
+         <InvoiceItem   
+            
+            id={id}
+            {...invoice}/>
+
+         ))
+      }      
+          
+     </div>
+        
+
+
+
+
+
+
+
+
+      <div>
+
+      </div>
+
+
+
     </main>
   )
 }
